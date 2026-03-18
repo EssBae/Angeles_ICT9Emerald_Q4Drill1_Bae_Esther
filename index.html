@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Q4 Drill 1</title>
+</head>
+<style>
+    .container{
+        padding: 200px;
+        background-color: rgb(164, 154, 142);
+        max-width: 400px;
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    input.number {
+        width: 80%;
+        padding: 8px;
+        margin: 10px 0;
+    }
+
+    button {
+        padding: 8px 16px;
+        background-color: #585858;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #3e3e3e;
+    }
+
+    #result {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <h1>kWh</h1>
+
+        <input class="number" id="kWh" placeholder="inpur kilowatt per hour"> <br>
+        <button onclick="calculate()">Consumption Classification</button>
+        <p id="result"></p>
+    </div>
+
+        <script>
+            function calculate(){
+                
+                let Usage = parseFloat(document.getElementById('kWh').value);
+
+                let Description = "";
+                let Invalid = "";
+
+                if (Usage > 500) {
+                    Description= "Heavy electricity user";
+                } else if (Usage >= 301 && Usage <= 500) {
+                    Description= "High electricity user";
+                } else if (Usage >= 201 && Usage <= 300) {
+                    Description=  "Typical electricity user";
+                } else if (Usage >= 101 && Usage <= 200) {
+                    Description=  "Normal electricity user";
+                } else if (Usage >= 0 && Usage <= 100) {
+                    Description=  "Discounted electricity user";
+                } else { 
+                    Description= "Please enter a valid number";
+                }
+
+                document.getElementById("result").innerHTML = 
+                "Consumption is: " + Usage + "<br>" + Description;
+            }
+        </script>
+    </div>
+
+</body>
+
+</html>
